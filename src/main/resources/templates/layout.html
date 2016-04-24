@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      th:fragment="layout">
+    <head>
+        <title>TODO supply a title</title>
+        <link href="/webjars/bootstrap/3.3.6/css/bootstrap.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+        <link href="/webjars/tether/1.1.1/dist/css/tether.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+        <script src="/webjars/jquery/1.12.2/dist/jquery.js"></script>
+        <script src="/webjars/tether/1.1.1/dist/js/tether.js"></script>
+        <script src="/webjars/bootstrap/3.3.6/js/bootstrap.js"></script>
+    </head>
+    <body style="padding-top: 50px;">
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Bike Rental</a>
+                </div>
+                <div id="navbar" class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container">
+            <div>
+                <h1>Bootstrap starter template</h1>
+                <p class="lead">
+                    Use this document as a way to quickly start any new project.
+                    <br/>
+                    All you get is this text and a mostly barebones HTML document.
+                </p>
+                <ul class="collection">
+                    <li th:each="bike : ${bikes}">
+                        <h1 th:text="${bike.name}">name</h1>
+                        <!--                            <a th:href="@{/post(id=${post.post_id})}"><span class="title" th:text="${post.title}">Username</span></a>
+                                                    <p th:text="${post.content}">Tweet message</p>-->
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div th:replace="${view} :: content">Page Content</div>
+    </body>
+</html>

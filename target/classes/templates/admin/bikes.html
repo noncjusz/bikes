@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="fragments/head :: head">
+        <title>Bikes - list</title>
+    </head>
+    <body>
+        <nav th:replace="fragments/menumain :: menumain"></nav>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="alert alert-success" role="alert" th:if="${success}">
+                        <strong>Well done!</strong> You successfully added new bike.
+                    </div>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>Description</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="bike : ${bikes}">
+                                <td th:text="${bike.id}">id</td>
+                                <td th:text="${bike.name}">name</td>
+                                <td th:text="${bike.description}">description</td>
+                                <td>status</td>
+                                <td>
+                                    <table style="width: 100%;">
+                                        <tr>
+                                            <td><a href="#"><i class="fa fa-pencil-square-o" style="margin-right: 5px;" aria-hidden="true"></i>Edit</a></td>
+                                            <td><a href="#"><i class="fa fa-trash-o" style="margin-right: 5px;" aria-hidden="true"></i>Delete</a></td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <a th:href="@{/admin/bikes/add}"><button type="button" class="btn btn-primary">Add new</button></a>
+                </div>
+                <div th:replace="fragments/menuadmin :: menuadmin"></div>
+            </div>
+        </div>
+    </body>
+</html>
