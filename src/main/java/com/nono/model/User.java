@@ -1,8 +1,13 @@
 package com.nono.model;
 
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -10,11 +15,15 @@ import javax.persistence.Id;
  */
 @Entity
 public class User {
-    
+
     private @Id @GeneratedValue Long id;
     private String username;
     private String password;
     private Boolean enabled;
+
+    @OneToMany(targetEntity = Reservation.class, cascade = CascadeType.ALL)
+    @JoinColumn(name = "bike")
+    private List<Reservation> reservation;
 
     public Long getId() {
         return id;
@@ -47,5 +56,12 @@ public class User {
     public void setEnabled(Boolean enabled) {
         this.enabled = enabled;
     }
-    
+
+    public List<Reservation> getReservation() {
+        return reservation;
+    }
+
+    public void setReservation(List<Reservation> reservation) {
+        this.reservation = reservation;
+    }
 }

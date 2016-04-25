@@ -5,11 +5,14 @@
     </head>
     <body>
         <nav th:replace="fragments/menumain :: menumain"></nav>
+        <script>
+            
+        </script>
         <div class="container">
             <div class="row">
                 <div class="col-md-9">
                     <div class="alert alert-success" role="alert" th:if="${success}">
-                        <strong>Well done!</strong> You successfully added new bike.
+                        <strong>Well done!</strong>&nbsp;<span th:text='${success}'>Success</span>
                     </div>
                     <table class="table table-striped">
                         <thead>
@@ -30,8 +33,8 @@
                                 <td>
                                     <table style="width: 100%;">
                                         <tr>
-                                            <td><a href="#"><i class="fa fa-pencil-square-o" style="margin-right: 5px;" aria-hidden="true"></i>Edit</a></td>
-                                            <td><a href="#"><i class="fa fa-trash-o" style="margin-right: 5px;" aria-hidden="true"></i>Delete</a></td>
+                                            <td><a th:href="@{/admin/bikes/edit/{bike}(bike=${bike.id})}"><i class="fa fa-pencil-square-o" style="margin-right: 5px;" aria-hidden="true"></i>Edit</a></td>
+                                            <td><a th:href="@{/admin/bikes/delete/{bike}(bike=${bike.id})}"><i class="fa fa-trash-o" style="margin-right: 5px;" aria-hidden="true"></i>Delete</a></td>
                                         </tr>
                                     </table>
                                 </td>

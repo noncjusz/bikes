@@ -15,13 +15,13 @@
                         <div class="form-group" th:classappend="${#fields.hasErrors('name')} ? has-error">
                             <label for="bikeName" class="col-sm-2 control-label">Name:</label>
                             <div class="col-sm-10">
-                                <input id="bikeName" class="form-control" type="text" th:field="*{name}" />
+                                <input id="bikeName" class="form-control" type="text" th:field="${bike.name}"/>
                             </div>
                         </div>
                         <div class="form-group" th:classappend="${#fields.hasErrors('description')} ? has-error">
                             <label for="bikeDescription" class="col-sm-2 control-label">Description:</label>
                             <div class="col-sm-10">
-                                <textarea id="bikeDescription" style="max-width: 100%" class="form-control" th:field="*{description}" />
+                                <textarea id="bikeDescription" style="max-width: 100%" class="form-control" th:field="${bike.description}" />
                             </div>
                         </div>
                         <div class="form-group text-center">

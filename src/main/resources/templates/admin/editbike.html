@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="fragments/head :: head">
+        <title>Bikes - list</title>
+    </head>
+    <body>
+        <nav th:replace="fragments/menumain :: menumain"></nav>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                    <form class="form-horizontal" action="#" th:action="@{/admin/bikes/edit/{bikeId}(bikeId=${bikeId})}" th:object="${bike}" method="post">
+                        <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('*')}">
+                            <strong>Error!</strong> Please check all fields.
+                        </div>
+                        <div class="form-group" th:classappend="${#fields.hasErrors('name')} ? has-error">
+                            <label for="bikeName" class="col-sm-2 control-label">Name:</label>
+                            <div class="col-sm-10">
+                                <input id="bikeName" class="form-control" type="text" th:field="${bike.name}"/>
+                            </div>
+                        </div>
+                        <div class="form-group" th:classappend="${#fields.hasErrors('description')} ? has-error">
+                            <label for="bikeDescription" class="col-sm-2 control-label">Description:</label>
+                            <div class="col-sm-10">
+                                <textarea id="bikeDescription" style="max-width: 100%" class="form-control" th:field="${bike.description}" />
+                            </div>
+                        </div>
+                        <div class="form-group text-center">
+                            <input type="submit" class="btn btn-primary" value="Save"/>
+                            <a th:href="@{/admin/bikes}"><button type="button" class="btn btn-default">Cancel</button></a>
+                        </div>
+                    </form>
+                </div>
+                <div th:replace="fragments/menuadmin :: menuadmin"></div>
+            </div>
+        </div>
+    </body>
+</html>

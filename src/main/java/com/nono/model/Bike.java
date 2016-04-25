@@ -5,10 +5,13 @@
  */
 package com.nono.model;
 
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.Size;
 
 /**
@@ -17,10 +20,14 @@ import javax.validation.constraints.Size;
  */
 @Entity
 public class Bike {
-    
+
     private @Id @GeneratedValue Long id;
     private @Size(min=1, max = 255) String name;
     private @Size(min=1, max = 255) String description;
+
+    @OneToMany(targetEntity = Reservation.class, cascade = CascadeType.ALL)
+    @JoinColumn(name = "bike")
+    private List<Reservation> reservation;
 
     public Long getId() {
         return id;
@@ -45,5 +52,12 @@ public class Bike {
     public void setDescription(String description) {
         this.description = description;
     }
-    
+
+    public List<Reservation> getReservation() {
+        return reservation;
+    }
+
+    public void setReservation(List<Reservation> reservation) {
+        this.reservation = reservation;
+    }
 }
