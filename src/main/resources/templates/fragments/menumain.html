@@ -5,13 +5,20 @@
         <nav th:fragment="menumain" class="navbar navbar-inverse navbar-static-top">
             <div class="container">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">Bike Rental</a>
+                    <a class="navbar-brand" href="#" th:href="@{/}">Bike Rental</a>
                 </div>
                 <div id="navbar" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Home</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li th:classappend="${#httpServletRequest.getRequestURI() == '/' ? 'active':''}"><a href="#" th:href="@{/}">Home</a></li>
+                        <li th:classappend="${#httpServletRequest.getRequestURI() == '/bikes' ? 'active':''}"><a href="#" th:href="@{/bikes}">Bikes</a></li>
+                        <li th:classappend="${#httpServletRequest.getRequestURI() == '/reservations' ? 'active':''}"><a href="#" th:href="@{/reservations}">My reservations</a></li>
+                        <!--<li th:classappend="${#httpServletRequest.getRequestURI().contains('/admin') ? 'active':''}"><a href="#" th:href="@{/admin/bikes}">Administrator</a></li>-->
+                        <li sec:authorize="isAuthenticated()">
+                            <a href="#" th:href="@{/logout}">Logout</a>
+                        </li>
+                        <li sec:authorize="isAnonymous()">
+                            <a href="#" th:href="@{/login}">Login</a>
+                        </li>
                     </ul>
                 </div>
             </div>

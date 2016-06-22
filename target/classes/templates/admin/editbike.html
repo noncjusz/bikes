@@ -18,6 +18,18 @@
                                 <input id="bikeName" class="form-control" type="text" th:field="${bike.name}"/>
                             </div>
                         </div>
+                        <div class="form-group" th:classappend="${#fields.hasErrors('image')} ? has-error">
+                            <label for="bikeImage" class="col-sm-2 control-label">Image:</label>
+                            <div class="col-sm-10">
+                                <select id="bikeImage" th:field="${bike.image}">
+                                    <option value="bike1">bike1</option>
+                                    <option value="bike2">bike2</option>
+                                    <option value="bike3">bike3</option>
+                                    <option value="bike4">bike4</option>
+                                    <option value="bike5">bike5</option>
+                                </select>
+                            </div>
+                        </div>
                         <div class="form-group" th:classappend="${#fields.hasErrors('description')} ? has-error">
                             <label for="bikeDescription" class="col-sm-2 control-label">Description:</label>
                             <div class="col-sm-10">

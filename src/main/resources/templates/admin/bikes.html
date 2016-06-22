@@ -5,9 +5,6 @@
     </head>
     <body>
         <nav th:replace="fragments/menumain :: menumain"></nav>
-        <script>
-            
-        </script>
         <div class="container">
             <div class="row">
                 <div class="col-md-9">
@@ -28,7 +25,7 @@
                             <tr th:each="bike : ${bikes}">
                                 <td th:text="${bike.id}">id</td>
                                 <td th:text="${bike.name}">name</td>
-                                <td th:text="${bike.description}">description</td>
+                                <td th:text="${bike.description}" style="max-width: 500px;">description</td>
                                 <td>status</td>
                                 <td>
                                     <table style="width: 100%;">

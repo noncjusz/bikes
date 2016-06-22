@@ -4,9 +4,8 @@
     <body>
         <div th:fragment="menuadmin" class="col-md-3">
             <ul class="nav nav-pills nav-stacked">
-                <li role="presentation" class="active"><a href="#">Home</a></li>
-                <li role="presentation"><a href="#">Profile</a></li>
-                <li role="presentation"><a href="#">Messages</a></li>
+                <li th:classappend="${#httpServletRequest.getRequestURI().contains('/admin/bikes') ? 'active':''}"><a th:href="@{/admin/bikes}">Bikes</a></li>
+                <li th:classappend="${#httpServletRequest.getRequestURI().contains('/admin/reservations') ? 'active':''}"><a th:href="@{/admin/reservations}">Reservations</a></li>
             </ul>
         </div>
     </body>

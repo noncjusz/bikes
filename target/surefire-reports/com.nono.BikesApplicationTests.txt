@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.nono.BikesApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 13.14 sec - in com.nono.BikesApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 15.346 sec - in com.nono.BikesApplicationTests

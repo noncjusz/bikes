@@ -17,9 +17,7 @@ public class AdminController {
     BikeRepository bikeRepository;
     
     @RequestMapping("/admin")
-    public ModelAndView indexAction() {
-        ModelAndView mav = new ModelAndView("admin/index");
-        mav.addObject("bikes", bikeRepository.findAll());
-        return mav;
+    public String indexAction() {
+        return "redirect:/admin/bikes";
     }
 }

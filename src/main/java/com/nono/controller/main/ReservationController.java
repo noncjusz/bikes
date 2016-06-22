@@ -12,12 +12,12 @@ import org.springframework.web.servlet.ModelAndView;
  * @author nono
  */
 @Controller
-public class OrderController {
+public class ReservationController {
 
     @Autowired
     BikeRepository bikeRepository;
 
-    @RequestMapping("/reservation")
+    @RequestMapping("/reservations")
     public ModelAndView indexAction() {
         ModelAndView mav = new ModelAndView("index");
         mav.addObject("bikes", bikeRepository.findAll());

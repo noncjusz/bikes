@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="fragments/head :: head">
+        <title>Bikes - list</title>
+    </head>
+    <body>
+        <nav th:replace="fragments/menumain :: menumain"></nav>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="alert alert-success" role="alert" th:if="${success}">
+                        <strong>Well done!</strong>&nbsp;<span th:text='${success}'>Success</span>
+                    </div>
+                    <div th:each="bike : ${bikes}" class="panel panel-default">
+                        <div class="panel-heading">
+                            <h1 class="panel-title" th:text="${bike.name}">Panel title</h1>
+                        </div>
+                        <div style="display: inline-block; width: 48%; vertical-align: top;">
+                            <img th:src="${'/images/' + bike.image + '.jpg'}" class="img-responsive" style="margin: 15px;"/>
+                        </div>
+                        <div style="display: inline-block; width: 50%; ; vertical-align: top; padding-top: 15px;">
+                            <div class="panel-body" th:text="${bike.description}">
+                                Panel content
+                            </div>
+                            <div th:switch="${bike.available}" style="margin: 15px;"> 
+                                <a th:href="@{/bikes/order/{bike}(bike=${bike.id})}"><button th:case="true" type="button" class="btn btn-primary">Make reservation</button></a>
+                                <button th:case="*" type="button" class="btn btn-default" disabled="disabled">Already reserved</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr class="featurette-divider" />
+            <footer>
+                <p> © 2016 Company, Inc. </p>
+            </footer>
+        </div>
+    </body>
+</html>

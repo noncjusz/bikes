@@ -62,6 +62,7 @@ public class AdminBikesController {
             Bike editBike = bikeRepository.findOne(bikeId);
             editBike.setName(bike.getName());
             editBike.setDescription(bike.getDescription());
+            editBike.setImage(bike.getImage());
             bikeRepository.save(editBike);
             redirectAttributes.addFlashAttribute("success", "You successfully changed bike.");
             return "redirect:/admin/bikes";
