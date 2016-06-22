@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="fragments/head :: head">
+        <title>Bikes - list</title>
+    </head>
+    <body>
+        <nav th:replace="fragments/menumain :: menumain"></nav>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="alert alert-success" role="alert" th:if="${success}">
+                        <strong>Well done!</strong>&nbsp;<span th:text='${success}'>Success</span>
+                    </div>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Bike</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="reservation : ${reservations}">
+                                <td th:text="${reservation.id}">id</td>
+                                <td th:text="${reservation.bike.name + ' (id: ' + reservation.bike.id + ')'}">bike</td>
+                                <td th:text="${reservation.status}">user</td>
+                                <td>
+                                    <a th:if="${reservation.status.contains('requested')}" th:href="@{/reservations/resign/{reservation}(reservation=${reservation.id})}"><i class="fa fa-times" style="margin-right: 5px;" aria-hidden="true"></i>Resign</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

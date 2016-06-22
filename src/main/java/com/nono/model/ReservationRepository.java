@@ -5,6 +5,7 @@
  */
 package com.nono.model;
 
+import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 
 /**
@@ -12,5 +13,5 @@ import org.springframework.data.repository.CrudRepository;
  * @author nono
  */
 public interface ReservationRepository extends CrudRepository<Reservation, Long> {
-    
+    public List<Reservation> findByUser(User user);
 }

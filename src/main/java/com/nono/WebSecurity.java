@@ -38,7 +38,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
         http
             .authorizeRequests()
                 .antMatchers("/admin", "/admin/**").hasRole("ADMIN")
-                .antMatchers("/bikes", "/bikes/**", "/reservations", "/reservations/**").hasRole("ADMIN")
+                .antMatchers("/bikes", "/bikes/**", "/reservations", "/reservations/**").hasRole("USER")
                 .antMatchers("/", "/images/**", "/css/**", "/webjars/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
